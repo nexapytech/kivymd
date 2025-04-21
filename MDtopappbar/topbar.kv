@@ -1,0 +1,61 @@
+#: import hex_color  kivy.utils.get_color_from_hex
+MDScreenManager:
+    Topbar_screen:
+    #Navigation_drawer:
+
+
+
+
+<Topbar_screen>:
+    MDBoxLayout:
+        orientation:"vertical"
+        MDRelativeLayout:
+            size_hint_y:None
+            height:dp(80)
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#261dc6')
+            MDTopAppBar:
+                type:"small"
+                theme_bg_color:"Custom"
+                md_bg_color:hex_color('#4841d3')
+                MDTopAppBarLeadingButtonContainer:
+                    MDActionTopAppBarButton:
+                        icon:'menu'
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#ffffff')
+                MDTopAppBarTitle:
+                    text:"Dashboard"
+                    theme_text_color:"Custom"
+                    text_color:hex_color('#ffffff')
+                MDTopAppBarTrailingButtonContainer:
+                    MDActionTopAppBarButton:
+                        icon:'heart-outline'
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#ffffff')
+                    MDActionTopAppBarButton:
+                        icon:'magnify'
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#ffffff')
+                    MDActionTopAppBarButton:
+                        icon:'dots-vertical'
+                        theme_text_color:"Custom"
+                        text_color:hex_color('#ffffff')
+        MDNavigationDrawer:
+            id: nav_drawer
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#4841d3')
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerLabel:
+                    text: "Profile"
+
+
+
+
+        Widget:
+
+<Navigation_drawer>:
+
+
+
+
+
