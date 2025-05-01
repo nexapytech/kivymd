@@ -1,0 +1,223 @@
+
+#: import  hex_color kivy.utils.get_color_from_hex
+
+MDScreenManager:
+    TodoScreen:
+
+
+
+<TodoItem@MDBoxLayout>:
+
+    radius:dp(15)
+    orientation: "horizontal"
+    size_hint_y: None
+    height: self.minimum_height
+    size_hint_x:1
+    height: dp(60)
+    padding: dp(10)
+    spacing: dp(10)
+    pos_hint:{'center_x':0.5, 'center_y':0.5}
+    md_bg_color: hex_color("#ffffff")
+    elevation:8
+    MDRelativeLayout:
+        pos_hint:{'center_x':0.5, 'center_y':0.5}
+        MDCheckbox:
+            size_hint: None, None
+            size: "48dp", "48dp"
+            pos_hint:{'left':1, 'center_y':0.5}
+            theme_active_color:"Custom"
+            color_active: hex_color('#39aacc')
+            color_inactive: hex_color('#39aacc')
+
+
+        MDLabel:
+            adaptive_size:True
+
+            size_hint_x: 1
+            text_size: self.width, None
+            padding: dp(60), 0
+            halign: "left"
+            pos_hint:{'center_x':0.5, 'center_y':0.5}
+            text:'this is a new todos list check the list last this is a new '
+            font_style:'Title'
+            halign:'left'
+            role:'small'
+            theme_text_color:"Custom"
+            text_color:hex_color('#687179')
+            bold:True
+
+        MDFabButton:
+            icon: "trash-can"
+            style: "small"
+            pos_hint:{'right':1}
+            theme_text_color:"Custom"
+            text_color:hex_color('#ffffff')
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#e40f0f')
+
+<TodoScreen>:
+    md_bg_color:hex_color('#e2e5e6')
+    MDBoxLayout:
+        spacing:dp(10)
+        padding:dp(5)
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        pos_hint: {"top": 1}
+
+        MDTopAppBar:
+            type:"small"
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#e2e5e6')
+            pos_hint:{'top':1}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon:'menu'
+                    theme_text_color:"Custom"
+                    text_color:hex_color('#4c4f52')
+
+            MDTopAppBarTitle:
+                text:'Task Dashboard'
+                theme_text_color:"Custom"
+                text_color:hex_color('#4c4f52')
+            MDTopAppBarTrailingButtonContainer:
+                MDCard:
+                    size_hint: None, None
+                    size: "40dp", "40dp"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    radius: dp(20)
+                    elevation: 8
+                    theme_bg_color:"Custom"
+                    md_bg_color:hex_color('#ffffff')
+                    FitImage:
+                        source: "profilepics.png"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        radius:dp(20)
+
+        MDBoxLayout:
+
+            spacing:dp(20)
+            padding:dp(5)
+            orientation:"vertical"
+            size_hint_y: None
+            height: self.minimum_height
+
+
+
+            MDBoxLayout:
+
+                size_hint_x:1
+                pos_hint:{'center_x':0.5, 'center_y':0.5}
+                radius:dp(15)
+
+                orientation:"vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                md_bg_color:hex_color('#ffffff')
+                MDTextField:
+                    role:'medium'
+                    mode: "outlined"
+                    size_hint_x:1
+                    pos_hint:{'center_x':0.5, 'center_y':0.5}
+                    radius:dp(15)
+                    theme_line_color: "Custom"
+                    line_color_focus: hex_color('#39aacc')
+                    line_color_normal: hex_color('#39aacc')
+                    on_text:root.search_todos(self)
+
+                    theme_text_color: "Custom"
+                    text_color_focus: hex_color('#39aacc')
+
+                    MDTextFieldLeadingIcon:
+                        icon:"magnify"
+                        icon_color:hex_color('#39aacc')
+                    MDTextFieldHintText:
+                        text:'Search'
+                        text_color_normal:hex_color('#39aacc')
+                        text_color_focus:hex_color('#39aacc')
+
+
+
+            MDLabel:
+                adaptive_size:True
+                pos_hint:{'left':1, 'center_y':0.5}
+                text:'All Todos'
+                font_style:'Title'
+                halign:'center'
+                role:'large'
+                theme_text_color:"Custom"
+                text_color:hex_color('#4c4f52')
+
+
+            MDScrollView:
+                id: scroll_view
+                bar_width: dp(2)  # Scroll bar width
+                bar_color: 0, 0, 0, 0.5  # Scroll bar color (gray)
+                bar_inactive_color: 0, 0, 0, 0.2
+                scroll_type: ['bars', 'content']  # smooth bar and content scroll
+                smooth_scroll_end: 10
+                do_scroll_x: False
+                size_hint_y:None
+                height: root.height * 0.5
+                MDList:
+                    id:todo_list
+                    spacing:dp(10)
+
+
+
+
+
+
+
+
+
+
+
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        size_hint_y: None
+        height: dp(80)
+        padding: dp(20)
+        spacing: dp(10)
+        md_bg_color: hex_color("#b1c7de")
+        md_fg_color: hex_color("#b1c7de")
+        MDTextField:
+            id:todo_item
+            role:'medium'
+            mode: "filled"
+            size_hint_x:1
+            on_text:root.text_length(self)
+            pos_hint:{'center_x':0.5, 'center_y':0.65}
+            radius:[dp(15),dp(15), dp(15), dp(15)]
+            theme_text_color: "Custom"
+            text_color_focus: hex_color('#39aacc')
+            theme_bg_color: "Custom"
+            fill_color_normal: hex_color('#ffffff')
+            fill_color_focus: hex_color('#ffffff')
+            theme_line_color:"Custom"
+            line_color_focus: hex_color('#39aacc')
+            line_color_normal: hex_color('#39aacc')
+            MDTextFieldHintText:
+                text:'Add a new todo item'
+                text_color_normal:hex_color('#39aacc')
+                text_color_focus:hex_color('#39aacc')
+
+
+            MDTextFieldMaxLengthText:
+                max_text_length: 65
+
+
+        MDFabButton:
+            id:add_todo
+            icon: "plus"
+            style: "standard"
+            pos_hint:{'center_x':0.5, 'center_y':0.65}
+            theme_text_color:"Custom"
+            text_color:hex_color('#ffffff')
+            theme_bg_color:"Custom"
+            md_bg_color:hex_color('#39aacc')
+            on_release:root.add_todo()
+
+
